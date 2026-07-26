@@ -10,39 +10,35 @@ export default function DownloadButton({
   const [loading, setLoading] = useState(false);
 
   async function handleDownload() {
-    console.log("Download button clicked");
-    setLoading(true);
+  setLoading(true);
 
-    try {
-      const response = await fetch(`/api/photos/${id}/download`, {
-        method: "POST",
-      });
+  try {
+    const response = await fetch(`/api/photos/${id}/download`, {
+      method: "POST",
+    });
 
-      const text = await response.text();
-console.log(text);
-return;
+    const result = await response.json();
 
-      if (!result.success) {
-        alert(result.message);
-        return;
-      }
-
-      const link = document.createElement("a");
-      link.href = result.image;
-      link.download = "";
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-
-      // Refresh the page so the download count updates
-      window.location.reload();
-    } catch (error) {
-      console.error(error);
-      alert("Download failed.");
-    } finally {
-      setLoading(false);
+    if (!result.success) {
+      alert(result.message);
+      return;
     }
+
+    const link = document.createElement("a");
+    link.href = result.image;
+    link.download = "";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    window.location.reload();
+  } catch (error) {
+    console.error(error);
+    alert("Download failed.");
+  } finally {
+    setLoading(false);
   }
+}
 
   return (
     <button
