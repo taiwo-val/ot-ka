@@ -1,10 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Navbar() {
+  const { data: session } = useSession();
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -26,30 +29,23 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <Link
-  href="/"
-  className="flex items-center gap-3"
->
-  <Image
-    src="/logo.png"
-    alt="OT.KA Logo"
-    width={55}
-    height={55}
-    priority
-  />
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/logo.png"
+            alt="OT.KA Logo"
+            width={45}
+            height={45}
+            priority
+          />
 
-  <div>
-    <h1 className="text-2xl font-extrabold tracking-widest">
-      OT.KA
-    </h1>
+          <span className="text-2xl font-bold tracking-widest">
+            OT.KA
+          </span>
+        </Link>
 
-    <p className="text-xs text-gray-400 hidden sm:block">
-      Capture. Inspire. Share.
-    </p>
-  </div>
-</Link>
-
-        <div className="hidden gap-8 md:flex">
+        {/* Main Menu */}
+        <div className="hidden items-center gap-8 md:flex">
           <Link href="/" className="hover:text-green-500 transition">
             Home
           </Link>
@@ -58,14 +54,13 @@ export default function Navbar() {
             Gallery
           </Link>
 
-          <Link href="/matches">
-          Matches
+          <Link href="/matches" className="hover:text-green-500 transition">
+            Matches
           </Link>
 
-          <Link href="/players">
-          Players
+          <Link href="/players" className="hover:text-green-500 transition">
+            Players
           </Link>
-
 
           <Link href="/services" className="hover:text-green-500 transition">
             Services
@@ -74,6 +69,59 @@ export default function Navbar() {
           <Link href="/contact" className="hover:text-green-500 transition">
             Contact
           </Link>
+        </div>
+
+        {/* Right Side */}
+        <div className="flex items-center gap-4">
+          {!session ? (
+            <>
+              <Link
+                href="/login"
+                className="rounded-lg border border-green-600 px-5 py-2 transition hover:bg-green-600"
+              >
+                Login
+              </Link>
+
+              <Link
+                href="/register"
+                className="rounded-lg bg-green-600 px-5 py-2 transition hover:bg-green-700"
+              >
+                Register
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/favorites"
+                className="hover:text-green-500 transition"
+              >
+                ❤️ Favorites
+              </Link>
+
+              <Link
+                href="/profile"
+                className="hover:text-green-500 transition"
+              >
+                Profile
+              </Link>
+
+              {(session.user as any).role === "ADMIN" && (
+                <Link
+                  href="/admin"
+                  className="rounded-lg bg-green-600 px-4 py-2 font-semibold"
+                >
+                  Dashboard
+                </Link>
+              )}
+
+              <button
+                onClick={() => signOut({ callbackUrl: "/" })}
+                className="rounded-lg bg-red-600 px-4 py-2 hover:bg-red-700"
+              >
+                Logout
+              </button>
+            </>
+          )}
         </div>
       </nav>
     </header>
