@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -25,9 +26,28 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <Link href="/" className="text-3xl font-extrabold tracking-widest">
-          OT.KA
-        </Link>
+        <Link
+  href="/"
+  className="flex items-center gap-3"
+>
+  <Image
+    src="/logo.png"
+    alt="OT.KA Logo"
+    width={55}
+    height={55}
+    priority
+  />
+
+  <div>
+    <h1 className="text-2xl font-extrabold tracking-widest">
+      OT.KA
+    </h1>
+
+    <p className="text-xs text-gray-400 hidden sm:block">
+      Capture. Inspire. Share.
+    </p>
+  </div>
+</Link>
 
         <div className="hidden gap-8 md:flex">
           <Link href="/" className="hover:text-green-500 transition">

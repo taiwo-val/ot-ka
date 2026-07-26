@@ -1,53 +1,102 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-black border-t border-zinc-800">
+    <footer className="border-t border-zinc-800 bg-black text-white mt-20">
       <div className="mx-auto max-w-7xl px-6 py-12">
+
         <div className="grid gap-10 md:grid-cols-3">
 
-          {/* Brand */}
+          {/* Logo */}
           <div>
-            <h2 className="text-3xl font-bold">
-              OT.<span className="text-green-500">KA</span>
-            </h2>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="OT.KA Logo"
+                width={70}
+                height={70}
+              />
 
-            <p className="mt-4 text-zinc-400">
-              Capturing every moment of the beautiful game through
-              professional football photography.
+              <div>
+                <h2 className="text-2xl font-bold">
+                  OT.KA
+                </h2>
+
+                <p className="text-sm text-zinc-400">
+                  Capture. Inspire. Share.
+                </p>
+              </div>
+            </div>
+
+            <p className="mt-5 text-zinc-400 leading-7">
+              OT.KA is your home for football photography.
+              Browse, download and relive every football
+              moment captured on and off the pitch.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-  <h3 className="text-xl font-semibold">Get in Touch</h3>
+            <h3 className="mb-4 text-xl font-semibold">
+              Quick Links
+            </h3>
 
-  <div className="mt-4 space-y-4 text-zinc-400">
+            <div className="flex flex-col gap-3">
 
-    <div className="flex items-center gap-3">
-      <Mail size={18} className="text-green-500" />
-      <span>taiwovalentine@gmail.com</span>
-    </div>
+              <Link href="/">
+                Home
+              </Link>
 
-    <div className="flex items-center gap-3">
-      <Phone size={18} className="text-green-500" />
-      <span>+234 8102623213</span>
-    </div>
+              <Link href="/gallery">
+                Gallery
+              </Link>
 
-    <div className="flex items-center gap-3">
-      <MapPin size={18} className="text-green-500" />
-      <span>Nigeria osun state</span>
-    </div>
+              <Link href="/matches">
+                Matches
+              </Link>
 
-  </div>
-</div>
+              <Link href="/players">
+                Players
+              </Link>
+
+              <Link href="/services">
+                Services
+              </Link>
+
+              <Link href="/contact">
+                Contact
+              </Link>
+
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="mb-4 text-xl font-semibold">
+              Contact
+            </h3>
+
+            <p className="text-zinc-400">
+              Email:
+            </p>
+
+            <p className="mb-4">
+              support@otka.com
+            </p>
+
+            <p className="text-zinc-400">
+              Follow OT.KA for the latest football moments.
+            </p>
+          </div>
 
         </div>
 
-        <div className="mt-12 border-t border-zinc-800 pt-6 text-center text-zinc-500">
-          © {new Date().getFullYear()} OT.KA Football Photography.
+        <div className="mt-10 border-t border-zinc-800 pt-6 text-center text-zinc-500">
+
+          © {new Date().getFullYear()} OT.KA.
           All Rights Reserved.
+
         </div>
       </div>
     </footer>
