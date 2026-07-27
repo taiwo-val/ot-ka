@@ -53,9 +53,9 @@ export default function FeaturedPhotos() {
 
                 <Link
                   href="/gallery"
-                  className="mt-5 block w-full rounded-lg bg-green-500 py-3 text-center font-semibold transition hover:bg-green-600"
+                  className="mt-5 block rounded-lg bg-green-600 py-3 text-center font-semibold transition hover:bg-green-700"
                 >
-                  View & Download
+                  View Gallery
                 </Link>
               </div>
             </div>
