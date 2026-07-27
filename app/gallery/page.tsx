@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import GalleryClient from "@/components/GalleryClient";
 
+export const dynamic = "force-dynamic";
+
 export default async function GalleryPage() {
   const photos = await prisma.photo.findMany({
     orderBy: {
@@ -21,7 +23,7 @@ export default async function GalleryPage() {
           Football Gallery
         </h1>
 
-        <p className="mt-4 mb-12 text-center text-zinc-400">
+        <p className="mb-12 mt-4 text-center text-zinc-400">
           Relive the biggest football moments through the lens of OT.KA.
         </p>
 
