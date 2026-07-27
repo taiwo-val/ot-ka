@@ -5,17 +5,14 @@ const photos = [
   {
     id: 1,
     image: "/images/match1.jpg",
-    title: "Match Day #1",
   },
   {
     id: 2,
     image: "/images/match2.jpg",
-    title: "Match Day #2",
   },
   {
     id: 3,
     image: "/images/match3.jpg",
-    title: "Match Day #3",
   },
 ];
 
@@ -35,16 +32,16 @@ export default function FeaturedPhotos() {
             >
               <div className="relative flex h-80 items-center justify-center bg-black">
                 <Image
-                  src={photo.image}
-                  alt={photo.title}
-                  fill
-                  className="object-contain"
-                />
+  src={photo.image}
+  alt="Featured football photo"
+  fill
+  className="object-contain"
+/>
               </div>
 
               <div className="p-5">
                 <h3 className="text-xl font-semibold">
-                  {photo.title}
+                
                 </h3>
 
                 <p className="mt-2 text-zinc-400">

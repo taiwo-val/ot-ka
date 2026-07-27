@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import Featured from "@/components/Featured";
 import Services from "@/components/Services";
 import GalleryPreview from "@/components/GalleryPreview";
+import FeaturedPhotos from "@/components/FeaturedPhotos";
 import Stats from "@/components/Stats";
+import About from "@/components/About";
 import Footer from "@/components/Footer";
 import LatestMatches from "@/components/LatestMatches";
 import PhotoOfTheWeek from "@/components/PhotoOfTheWeek";
@@ -69,14 +70,16 @@ export default function Home() {
       </section>
 
       {/* Homepage Sections */}
-      <Featured />
-      <PhotoOfTheWeek />
-      <Services />
-      <Stats />
-      <GalleryPreview />
-      <LatestMatches />
+    
 
-      <Footer />
+<FeaturedPhotos />
+<GalleryPreview />
+<PhotoOfTheWeek />
+<Services />
+<Stats />
+<LatestMatches />
+<Footer />
+
     </main>
   );
 }
