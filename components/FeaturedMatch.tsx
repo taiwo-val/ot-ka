@@ -3,20 +3,21 @@ import Link from "next/link";
 
 export default function FeaturedMatch() {
   return (
-    <section className="bg-zinc-950 py-24 px-6">
-      <div className="mx-auto max-w-7xl rounded-3xl bg-zinc-900 overflow-hidden lg:grid lg:grid-cols-2">
+    <section className="bg-zinc-950 px-6 py-24">
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-zinc-900 lg:grid lg:grid-cols-2">
 
-        <div className="relative h-96 lg:h-full">
+        <div className="relative flex h-96 items-center justify-center bg-black lg:h-full">
           <Image
             src="/images/featured-match.jpg"
             alt="Featured Match"
             fill
-            className="object-cover"
+            className="object-contain"
+            priority
           />
         </div>
 
-        <div className="p-10 flex flex-col justify-center">
-          <p className="text-green-500 uppercase tracking-[0.3em] font-semibold">
+        <div className="flex flex-col justify-center p-10">
+          <p className="font-semibold uppercase tracking-[0.3em] text-green-500">
             Featured Match
           </p>
 
@@ -24,7 +25,7 @@ export default function FeaturedMatch() {
             EKSU League Final
           </h2>
 
-          <p className="mt-6 text-zinc-400 leading-8">
+          <p className="mt-6 leading-8 text-zinc-400">
             An unforgettable final packed with goals, emotion and incredible
             celebrations. Explore the complete gallery from this amazing match.
           </p>
@@ -37,7 +38,7 @@ export default function FeaturedMatch() {
 
           <Link
             href="/gallery"
-            className="mt-10 inline-block w-fit rounded-lg bg-green-500 px-8 py-4 font-semibold hover:bg-green-600"
+            className="mt-10 inline-block w-fit rounded-lg bg-green-500 px-8 py-4 font-semibold transition hover:bg-green-600"
           >
             View Match
           </Link>

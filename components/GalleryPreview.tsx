@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const gallery = [
   "/images/match1.jpg",
@@ -9,7 +10,7 @@ const gallery = [
 
 export default function GalleryPreview() {
   return (
-    <section className="bg-black py-20 px-6">
+    <section className="bg-black px-6 py-20">
       <div className="mx-auto max-w-7xl">
         <h2 className="text-center text-4xl font-bold">
           Gallery Preview
@@ -23,22 +24,25 @@ export default function GalleryPreview() {
           {gallery.map((photo, index) => (
             <div
               key={index}
-              className="relative aspect-square overflow-hidden rounded-xl"
+              className="relative aspect-square overflow-hidden rounded-xl bg-zinc-900"
             >
               <Image
                 src={photo}
                 alt={`Gallery ${index + 1}`}
                 fill
-                className="object-cover transition duration-300 hover:scale-110"
+                className="object-contain transition duration-300 hover:scale-105"
               />
             </div>
           ))}
         </div>
 
         <div className="mt-10 text-center">
-          <button className="rounded-lg bg-green-500 px-8 py-4 font-semibold transition hover:bg-green-600">
+          <Link
+            href="/gallery"
+            className="inline-block rounded-lg bg-green-500 px-8 py-4 font-semibold transition hover:bg-green-600"
+          >
             View Full Gallery
-          </button>
+          </Link>
         </div>
       </div>
     </section>
